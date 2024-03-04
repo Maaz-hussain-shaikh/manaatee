@@ -1,0 +1,118 @@
+.tour-card-v2__legibility-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    border-radius: 12px;
+    z-index: -1;
+    background-image: linear-gradient(to top, rgba(0,0,0,0.63), transparent);
+}
+.tour-card-v2__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    z-index: -1;
+    overflow: hidden;
+}
+.tour-card-v2__banner {
+    position: relative;
+    height: 301px;
+    padding: 18px 12px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+}
+.tour-card-v2__name {
+    color: #3a3a3a;
+    font-weight: 500;
+    line-height: 1.56;
+    font-size: 16px;
+    -webkit-line-clamp: 2;
+    max-height: calc(2 * 16px * 1.56);
+    overflow: hidden;
+    display: block;
+}
+.tour-card-v2__details-wrap {
+    margin: 10px;
+}
+.tour-card-v2__reviews-wrap {
+    margin-top: 7px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    line-height: 1;
+    font-size: 12px;
+    color: #949494;
+}
+.tour-card-v2__reviews-wrap .icon-star-empty {
+    color: #ffc527;
+}
+.icon-star-empty:before {
+    content: "";
+}
+.tour-card-v2__average-rating {
+    font-weight: 500;
+    margin: 0 5px 0 5.5px;
+}
+
+.tour-card-v2__pricing .old-price {
+    color: #898989;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 1;
+    margin-right: 9px;
+}
+.tour-card-list .old-price:before{
+    left: 0;
+    right: 8px;
+}
+.tour-card-v2 {
+    width: 222px;
+    margin-left: 25px;
+}
+a:hover {
+    color: #ff5300;
+    text-decoration: none;
+}
+.tour-card-v2__name {
+    color: #3a3a3a;
+    font-weight: 500;
+    line-height: 1.56;
+    text-decoration: none;
+    font-size: 16px;
+    -webkit-line-clamp: 2;
+    max-height: calc(2 * 16px * 1.56);
+    overflow: hidden;
+    display: block;
+}
+.tour-card-v2__additional-info {
+    padding: 0;
+    list-style: none;
+    margin: 6px 0 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.54;
+}
+.tour-card-v2__pricing .current-price {
+    color: #3a3a3a;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.56;
+}
+.tour-card-v2__details-wrap {
+    margin: 10px;
+    width: 80%;}
+
+.tour-card-v2{
+    display: inline-flex;
+margin-top: 25px;
+}
