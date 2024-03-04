@@ -30,9 +30,7 @@ function App() {
             <li><a className="dropdown-item" href="/">Something else here</a></li>
           </ul>
         </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+       
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -41,13 +39,13 @@ function App() {
     </div>
   </div>
 </nav>
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+<div className="mb-3">
+  <label for="exampleFormControlInput1" className="form-label">Email address</label>
+  <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
 </div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<div className="mb-3">
+  <label for="exampleFormControlTextarea1" className="form-label">Example textarea</label>
+  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 
     </>
