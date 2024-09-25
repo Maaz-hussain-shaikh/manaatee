@@ -26,9 +26,11 @@ const Form = () => {
       }
      );
      setErrorMessage(response.data.mass);
-      console.log("Login successful:", response.data);
      if(response.data.status===true){
       locate("/Dash")
+      console.log(response.data.Userdata[0].user_type)
+      sessionStorage.setItem('username', response.data.Userdata[0].username);
+      sessionStorage.setItem('userType', response.data.Userdata[0].user_type);
      }else{
       setPassword("");
       setuser("")
