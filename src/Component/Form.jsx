@@ -37,9 +37,9 @@ const Form = () => {
      }
       
     } catch (error) {
-      
+      setErrorMessage("Please check your internet connection and try again");
       console.error("Login error:", error.response?.data || error);
-      setErrorMessage(error.response?.data?.message);
+      
     }
   
     
@@ -59,7 +59,7 @@ const Form = () => {
           <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
-        <div className="flex md:w-1/2 justify-center py-10 items-center bg-white">
+        <div className="flex w-1/2 justify-center py-10 items-center">
 
         <form onSubmit={handleLogin}>
           <div className="bg-white">

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
 const Opform = () => {
   const URL = 'https://aaliyaenterprises.com/manaatee/Api/admin/operator_registration';
 
-  const locate = useNavigate();
+ 
   const [data, setData] = useState({
     full_name: "",
     email: "",
