@@ -27,7 +27,7 @@ const Form = () => {
      );
      setErrorMessage(response.data.mass);
      if(response.data.status===true){
-      locate("/Dash")
+      locate("/")
       console.log(response.data.Userdata[0].user_type)
       sessionStorage.setItem('username', response.data.Userdata[0].username);
       sessionStorage.setItem('userType', response.data.Userdata[0].user_type);

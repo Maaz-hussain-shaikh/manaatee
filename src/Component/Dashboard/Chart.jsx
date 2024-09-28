@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import {
   Chart as ChartJS,
   LineElement,
+  LineController,
+  BarController,
   BarElement,
   Title,
   Tooltip,
@@ -15,7 +17,7 @@ import { Chart } from 'react-chartjs-2';
 import 'tailwindcss/tailwind.css';
 
 // Register all necessary elements
-ChartJS.register(LineElement, BarElement, Title, Tooltip, Legend, CategoryScale, LinearScale, PointElement);
+ChartJS.register(BarController,LineController,LineElement, BarElement, Title, Tooltip, Legend, CategoryScale, LinearScale, PointElement);
 
 const Chartcom = () => {
   useEffect(() => {
