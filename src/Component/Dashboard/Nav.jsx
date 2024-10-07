@@ -14,7 +14,7 @@ const Nav = ({ onToggle }) => {
     <>
       <div className="fixed w-full flex items-center justify-between h-14 text-white z-10">
         <div className="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
-          <img className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden" src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg" alt='domi' />
+          <img className="w-7 h-7 md:w-10 md:h-10 mr-2 object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt='domi' />
           <span className="hidden md:block">{name}</span>
         </div>
         <div className="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
@@ -41,12 +41,12 @@ const Nav = ({ onToggle }) => {
                 */}
             </li>
             <li>
-              <div className="flex items-center ml-4 hover:text-blue-100" onClick={onToggle}>
+              <Link to="/Opform" className="flex items-center ml-4 hover:text-blue-100" >
                 <span className="inline-flex justify-center items-center mr-1">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                 </span>
                 Add Operator
-              </div>
+              </Link>
             </li>
             <li>
 

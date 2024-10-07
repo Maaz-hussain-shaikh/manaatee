@@ -2,7 +2,7 @@ import React from 'react'
 
 const Clienttable = () => {
   return (
-    <div>
+    <>
       <div className="mt-4 mx-4">
           <div className="w-full overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
@@ -162,7 +162,7 @@ const Clienttable = () => {
             </div>
           </div>
         </div>
-    </div>
+    </>
   )
 }
 

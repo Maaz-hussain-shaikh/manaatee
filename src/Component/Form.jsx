@@ -46,7 +46,7 @@ const Form = () => {
   };
   return (
     <>
-       <div className="h-screen md:flex">
+       <div className="h-screen md:flex  ">
         <div
           className="relative overflow-hidden md:flex w-1/2 bg-brand-darktheme from-blue-800 to-purple-700 i justify-around items-center hidden">
           <div>
@@ -59,7 +59,7 @@ const Form = () => {
           <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
           <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
         </div>
-        <div className="flex w-1/2 justify-center py-10 items-center">
+        <div className="flex md:w-1/2 justify-center py-10 items-center">
 
         <form onSubmit={handleLogin}>
           <div className="bg-white">
