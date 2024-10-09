@@ -4,7 +4,7 @@ import axios from 'axios';
 const Opratorlist = () => {
       const URL="https://aaliyaenterprises.com/manaatee/Api/admin/all_operators"
 const [data,setdata]=useState();
-const [mass,setmass]= useState();
+
 
 
 useEffect(()=>{
@@ -58,8 +58,8 @@ useEffect(()=>{
            {
                         data?.map((elem,index)=>{
                             const formattedDate = new Date(data[index].created_date).toLocaleDateString()
-                            return(<>
-                            <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                            return(
+                            <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index}>
                     <td className="px-4 py-3">
                       <div className="flex items-center text-sm">
                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -79,7 +79,7 @@ useEffect(()=>{
                     <td className="px-4 py-3 text-sm">{formattedDate}</td>
                   </tr>
                             
-                            </>)
+                           )
                         })
                     }
         </>
