@@ -9,7 +9,7 @@ const Mobile=()=>{
           <img
             loading="lazy"
             src="https://docsapp-doctor.s3.us-west-2.amazonaws.com/profile_images/34003.Manisha"
-            alt="Doctor Profile Photo"
+            alt="Doctor Profile"
             className="aspect-[0.99] object-contain object-center w-[8.75rem] overflow-hidden shrink-0 max-w-full rounded-[60%] border-2 border-gray-200 bg-white"
           />
         </div>
@@ -120,7 +120,7 @@ const Userprofile = () => {
           <div className="flex w-full max-w-[78rem] justify-between gap-5 items-start max-md:max-w-full max-md:flex-wrap">
             <div className="flex items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
 
-              <img loading="lazy" src="https://docsapp-doctor.s3.us-west-2.amazonaws.com/profile_images/34003.Manisha" alt="Doctor Profile Photo" className="aspect-[0.99] object-contain object-center w-[8.75rem] overflow-hidden shrink-0 max-w-full rounded-[60%] border-2 border-gray-200 bg-white" />
+              <img loading="lazy" src="https://docsapp-doctor.s3.us-west-2.amazonaws.com/profile_images/34003.Manisha" alt="Doctor Profile" className="aspect-[0.99] object-contain object-center w-[8.75rem] overflow-hidden shrink-0 max-w-full rounded-[60%] border-2 border-gray-200 bg-white" />
               <div className="flex flex-col">
                 <button className="text-indigo-950 text-sm font-bold bg-blue-100 px-3 py-1 rounded-lg">Psychology</button>
                 <h1 className="text-indigo-950 text-2xl font-bold mt-3.5">Ms. Manisha Singh <Link to="/Profile/EditProfile">

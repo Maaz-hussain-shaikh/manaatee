@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const UserProfileCard = () => {
-  const path=useNavigate()
+
   return (
 <div className="rounded-xl bg-white p-6 shadow-lg w-full mb-4">
   <div className="flex flex-wrap ">
