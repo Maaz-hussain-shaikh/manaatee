@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Userlist = () => {
   const URL = "https://aaliyaenterprises.com/manaatee/Api/Users/all_user?page=1&limit=10"
   const [data, setdata] = useState();
-  const [selectedUserId, setSelectedUserId] = useState(null);
+ 
   const locate = useNavigate()
 
   useEffect(() => {

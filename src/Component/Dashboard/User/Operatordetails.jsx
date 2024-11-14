@@ -38,7 +38,7 @@ const OperatorDetails = () => {
     };
     fetchdata();
 
-  },[URL])
+  },[URL,operatorid])
 
   return (
    
