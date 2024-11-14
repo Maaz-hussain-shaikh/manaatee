@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import PageHeader from './Pageheader';
 
-import UserDetails from './User/UserDetails';
+import { useNavigate } from 'react-router-dom';
 
 const Userlist = () => {
   const URL = "https://aaliyaenterprises.com/manaatee/Api/Users/all_user?page=1&limit=10"
   const [data, setdata] = useState();
   const [selectedUserId, setSelectedUserId] = useState(null);
-
+  const locate = useNavigate()
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -38,15 +38,13 @@ const Userlist = () => {
 
   }, [])
 
-const details=(id)=>{
-  setSelectedUserId(id)
-}
+
   return (
     <>
       <div className="mt-4 mx-4">
         <PageHeader name="All User List" path="Home" path2="All User List" />
     
-           {selectedUserId === null ? <>
+          
            <div className="w-full overflow-hidden rounded-lg shadow-xs">
           <div className="w-full overflow-x-auto">
             <table className="w-full">
@@ -65,7 +63,7 @@ const details=(id)=>{
                       data?.map((elem, index) => {
                         const formattedDate = new Date(data[index].created_date).toLocaleDateString()
                         return (
-                          <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index} onClick={()=>{details(data[index].user_id)}}>
+                          <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index} onClick={()=>{locate(`/userdetails/${data[index].user_id}`)}}>
                             <td className="px-4 py-3">
                               <div className="flex items-center text-sm">
                                 <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -99,8 +97,8 @@ const details=(id)=>{
             </table>
           </div>
         </div>
-           </>:<><UserDetails user={selectedUserId} /></>
-        }
+         
+       
       </div>
     </>
   )

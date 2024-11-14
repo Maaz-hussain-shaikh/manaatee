@@ -1,71 +1,166 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPageData } from '../../../datastore/paginationAction';
 import PageHeader from '../Pageheader';
-import Modratorlist from './Modratorlist';
 
 const Modrator = () => {
-  const URL = "https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator?page=1&limit=10"
-  const [data, setdata] = useState([]);
+  const URL = "https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator";
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state) => state.pagination);
+  const [currentPage, setCurrentPage] = useState(1); // Start from page 1
+
   useEffect(() => {
-    const fetchdata = async () => {
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
-          }
-        });
+    dispatch(fetchPageData(URL, currentPage));
+  }, [dispatch, URL, currentPage]);
 
-        if (response.data.status === true) {
-          console.log(response.data)
-          setdata(response.data.data)
-        } else {
-          setdata(response.data.mass)
-        }
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
 
-      } catch (error) {
-
-        console.error("some thing broke error:", error.response?.data || error);
-
-      }
-
-
-    };
-    fetchdata();
-
-  }, [])
-
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
 
   return (
     <>
-
       <div className="mt-4 mx-4">
         <PageHeader name="Moderator List" path="Home" path2="Moderator List" />
-        
-            
-                {data?.length > 0 ? (
-                  <>
-                    {
-                      data?.map((elem, index) => {
-                        
-                        return (
-                          <Modratorlist key={index} data={elem}/>
-
-                        )
-                      })
-                    }
-                  </>
+        <div className="w-full overflow-hidden rounded-lg shadow-xs">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  <th className="px-4 py-3">User Name</th>
+                  <th className="px-4 py-3">Number</th>
+                  <th className="px-4 py-3">Created Date</th>
+                  <th className="px-4 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                {loading ? (
+                  <tr>
+                    <td colSpan="4" className="text-center">Loading...</td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan="4" className="text-center text-red-500">Error: {error.message || "Something went wrong"}</td>
+                  </tr>
+                ) : data[currentPage]?.data?.length > 0 ? (
+                  data[currentPage]?.data.map((elem, index) => {
+                    const formattedDate = new Date(elem.created_date).toLocaleDateString();
+                    return (
+                      <tr key={index} className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                        <td className="px-4 py-3">
+                          <div className="flex items-center text-sm">
+                            <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                              <img
+                                className="object-cover w-full h-full rounded-full"
+                                src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                alt=""
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+                            <div>
+                              <p className="font-semibold">{elem.full_name}</p>
+                              <p className="text-xs text-gray-600 dark:text-gray-400">{elem.years_of_experience} years experience</p>
+                              <p className="text-xs text-gray-600 dark:text-gray-400">{elem.email}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 text-sm">{elem.phone}</td>
+                        <td className="px-4 py-3 text-sm">{formattedDate}</td>
+                        <td className="px-4 py-3 text-xs">
+                          <span className={`px-2 py-1 font-semibold leading-tight ${elem.status === "Active" ? "text-green-700 bg-green-100" : "text-red-700 bg-red-100"} rounded-full`}>
+                            {elem.status}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })
                 ) : (
-                  <div>
-                    <div><p>Loading...</p></div>
-                  </div>
+                  <tr>
+                    <td colSpan="4" className="text-center text-gray-500">No data available</td>
+                  </tr>
                 )}
-
-             
-         
+              </tbody>
+            </table>
+          </div>
+          <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+            <span className="flex items-center col-span-3"> Showing Page {currentPage}</span>
+            <span className="col-span-2"></span>
+            <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+              <nav aria-label="Table navigation">
+                <ul className="inline-flex items-center">
+                  <li>
+                    <button
+                      className="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                      aria-label="Previous"
+                      onClick={handlePreviousPage}
+                      disabled={currentPage === 1}
+                    >
+                      <svg aria-hidden="true" className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" fillRule="evenodd"></path>
+                      </svg>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">{currentPage}</button>
+                  </li>
+                  <li>
+                    <button
+                      className="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                      aria-label="Next"
+                      onClick={handleNextPage}
+                      disabled={data && data.length === 0} // Disable if no more data
+                    >
+                      <svg className="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" fillRule="evenodd"></path>
+                      </svg>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </span>
+          </div>
+        </div>
       </div>
-
     </>
-  )
-}
+  );
+};
+
 
 export default Modrator
+
+
+// const URL = "https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator?page=1&limit=10"
+// const [data, setdata] = useState([]);
+// useEffect(() => {
+//   const fetchdata = async () => {
+//     try {
+//       const response = await axios.get(URL, {
+//         headers: {
+//           authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
+//         }
+//       });
+
+//       if (response.data.status === true) {
+//         console.log(response.data)
+//         setdata(response.data.data)
+//       } else {
+//         setdata(response.data.mass)
+//       }
+
+//     } catch (error) {
+
+//       console.error("some thing broke error:", error.response?.data || error);
+
+//     }
+
+
+//   };
+//   fetchdata();
+
+// }, [])

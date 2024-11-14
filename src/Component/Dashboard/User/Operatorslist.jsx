@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Opratorlist = () => {
       const URL="https://aaliyaenterprises.com/manaatee/Api/admin/all_operators"
 const [data,setdata]=useState();
-
-
+const locate=useNavigate();
 
 useEffect(()=>{
     const fetchdata= async ()=>{
@@ -93,7 +92,7 @@ useEffect(()=>{
                         data?.map((elem,index)=>{
                             const formattedDate = new Date(data[index].created_date).toLocaleDateString()
                             return(
-                            <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index}>
+                            <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index} onClick={()=>{locate(`/operatordetails/${data[index].user_id}`)}}>
                     <td className="px-4 py-3">
                       <div className="flex items-center text-sm">
                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">

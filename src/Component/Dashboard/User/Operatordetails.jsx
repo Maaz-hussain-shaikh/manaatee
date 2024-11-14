@@ -3,14 +3,16 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
-const UserDetails = () => {
-  const {userid} = useParams()
-    const URL = `https://aaliyaenterprises.com/manaatee/Api/Users/all_user?user_id=${userid}`
+const OperatorDetails = () => {
+  const {operatorid} = useParams()
+    const URL = `https://aaliyaenterprises.com/manaatee/Api/admin/all_operators`
   const [data, setdata] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.get(URL, {
+        const response = await axios.post(URL, {
+          "user_id":operatorid
+  },{
           headers: {
             authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
           }
@@ -56,19 +58,19 @@ const UserDetails = () => {
                 </Link>
                 </h1>
                 <h2 className="text-indigo-950 text-base font-bold mt-3">
-                 {data[0].email}  {data[0].phone}
+                 {data[0].email}  {data[0].number}
                 </h2>
                 <p>
                   Usertype :- {data[0].user_type} <br />
                   Otp verify :- {data[0].otp_verify}<br />
-                  Age :- {data[0].age}<br />
-                  Gender :- {data[0].gender}<br />
-                  Location :- {data[0].location}
+                  status :- {data[0].status}<br />
+                  login id :- {data[0].login_id}<br />
+                 
             
                 </p>
                 <div className="flex items-center mt-5">
                   <img loading="lazy" src="https://views.medibuddy.in/doctor-profile/languages.webp" alt="Languages" className="w-6" />
-                  <h3 className="text-indigo-950 text-sm font-bold ml-2">{data[0].preferred_language}</h3>
+                  <h3 className="text-indigo-950 text-sm font-bold ml-2">Hindi,English</h3>
                 </div>
               </div>
             </div>
@@ -183,4 +185,4 @@ const UserDetails = () => {
   )
 }
 
-export default UserDetails
+export default OperatorDetails
