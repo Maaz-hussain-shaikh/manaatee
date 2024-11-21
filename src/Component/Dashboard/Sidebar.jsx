@@ -50,17 +50,20 @@ const Sidebar = () => {
   return (
     <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-gray-800 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar">
       <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
+
+       
         <ul className="flex flex-col py-4 space-y-1">
-          <li className="px-5 hidden md:block">
-            <div className="flex flex-row items-center h-8">
-              <div className="text-sm font-light tracking-wide text-gray-400 uppercase">Main</div>
+          
+      <li className="px-4 mb-3 hidden md:block">
+            
+            <div className="">
+               <img src="staticimgs/manatee logo.png" alt="manatee logo" style={{maxWidth:"95px"}}/>
             </div>
           </li>
 
           <SidebarItem to="/" icon="fa-solid fa-house" label="Dashboard" />
-          <SidebarItem to="/posts" icon="fa-regular fa-images" label="Post" />
           <SidebarItem to="/specializationlist" icon="fa-solid fa-envelope" label="Specialization" />
-          <SidebarItem to="/all_primary_concerns" icon="fa-solid fa-envelope" label="All Primary Concerns" />
+          <SidebarItem to="/all_primary_concerns" icon="fa-regular fa-images" label="All Primary Concerns" />
           {/* <SidebarItem to="/coins" icon="fa-solid fa-coins" label="Coins" notification="1.2k" /> */}
           <SidebarItem to="/ProfessionalTitle" icon="fa-brands fa-hubspot" label="Professional Title" />
           <SidebarItem to="/Operatorlist" icon="fa-brands fa-hubspot" label="Operator" />
@@ -72,9 +75,8 @@ const Sidebar = () => {
             onToggle={() => handleToggle('user')}
             items={[
               { to: '/users', label: 'All Users',icon:"fa-brands fa-hubspot" },
-              { to: '/User/ConsultCategory', label: 'Post',icon:"fa-brands fa-hubspot" },
-              { to: '/User/Moderator', label: 'Coins & Redemption',icon:"fa-brands fa-hubspot" },
-              { to: '/User/Moderator', label: 'Vertual hug',icon:"fa-brands fa-hubspot" },
+              
+         
             ]}
           />
           
@@ -85,31 +87,19 @@ const Sidebar = () => {
             onToggle={() => handleToggle('Moderator Management')}
             items={[
               { to: '/Moderatorlist', label: 'All Moderator Profiles',icon:"fa-brands fa-hubspot" },
-              { to: '/User/ConsultCategory', label: 'Rating & Feedback',icon:"fa-brands fa-hubspot" },
-              { to: '/User/Moderator', label: 'Session Logs',icon:"fa-brands fa-hubspot" },
+              
               
             ]}
           />
-          <Dropdown
-            label="Content Moderation"
-            icon={"fa-solid fa-user"}
-            isOpen={activeMenu === 'Content Moderation'}
-            onToggle={() => handleToggle('Content Moderation')}
-            items={[
-              { to: '/User/OperatorList', label: 'Post Moderation',icon:"fa-brands fa-hubspot" },
-              { to: '/User/ConsultCategory', label: 'Comments',icon:"fa-brands fa-hubspot" },
-              { to: '/User/Moderator', label: 'Chat Monitoring',icon:"fa-brands fa-hubspot" },
-              
-            ]}
-          />
-          <li className="px-5 hidden md:block">
+        
+          {/* <li className="px-5 hidden md:block">
             <div className="flex flex-row items-center mt-5 h-8">
               <div className="text-sm font-light tracking-wide text-gray-400 uppercase">Settings</div>
             </div>
           </li>
 
           <SidebarItem to="/profile" icon="fa-solid fa-user-circle" label="Profile" />
-          <SidebarItem to="/settings" icon="fa-solid fa-cog" label="Settings" />
+          <SidebarItem to="/settings" icon="fa-solid fa-cog" label="Settings" /> */}
         </ul>
       </div>
     </div>

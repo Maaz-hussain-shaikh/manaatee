@@ -3,16 +3,19 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
-const OperatorDetails = () => {
-  const {operatorid} = useParams()
-    const URL = `https://aaliyaenterprises.com/manaatee/Api/admin/all_operators`
+
+
+const Moderatordetails = () => {
+  const { moderatorid } = useParams(); 
+  
+  const [active,setactive]=useState(false)
+    const URL = `https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator?'user_id=${moderatorid}`
+    
   const [data, setdata] = useState([]);
-  useEffect(() => {
+  useEffect(() => { 
     const fetchdata = async () => {
       try {
-        const response = await axios.post(URL, {
-          "user_id":operatorid
-  },{
+        const response = await axios.get(URL,{
           headers: {
             authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
           }
@@ -38,8 +41,39 @@ const OperatorDetails = () => {
     };
     fetchdata();
 
-  },[URL,operatorid])
-  console.log(operatorid)
+  },[URL])
+
+  const handleSelect = (option) => {
+
+    const fetchdata = async () => {
+        try {
+          const response = await axios.post("https://aaliyaenterprises.com/manaatee/Api/moderator/moderator_accept_reject",{
+            "user_id": moderatorid,
+            "user_status":option
+        }, {
+            headers: {
+              authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
+            }
+          });
+  
+          if (response.data.status === true) {
+            console.log(response)
+            
+          } else {
+            console.log(response)
+          }
+  
+        } catch (error) {
+  
+          console.error("some thing broke error:", error.response?.data || error);
+  
+        }
+  
+  
+      };
+      fetchdata();
+    console.log(moderatorid)
+};
   return (
    
     <>
@@ -68,6 +102,31 @@ const OperatorDetails = () => {
                  
             
                 </p>
+                <button className={`w-50 font-bold py-2 mt-3 rounded-lg ${data[0].status === "active" ? "text-green-700 bg-green-300" : "text-red-700 bg-red-100"}`} onClick={()=>{setactive(!active)}}>
+                {data[0].status}
+                {active ? <div className="absolute left-90 bg-white border rounded-sm shadow-lg overflow-hidden z-20 mt-2">
+                                    <div className="overflow-y-auto max-h-48">
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("active")}>
+                                            <p className="text-sm font-semibold cursor-pointer">Active</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("inactive")}>
+                                            <p className="text-sm font-semibold cursor-pointer">Inactive</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("deleted")}>
+                                            <p className="text-sm font-semibold cursor-pointer">Deleted</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("pending")}>
+                                            <p className="text-sm font-semibold cursor-pointer">Pending</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("reject")}>
+                                            <p className="text-sm font-semibold cursor-pointer">Reject</p>
+                                        </div>
+                                    </div>
+
+                                </div>:<></>
+}
+                </button>
+                
                 <div className="flex items-center mt-5">
                   <img loading="lazy" src="https://views.medibuddy.in/doctor-profile/languages.webp" alt="Languages" className="w-6" />
                   <h3 className="text-indigo-950 text-sm font-bold ml-2">Hindi,English</h3>
@@ -185,4 +244,4 @@ const OperatorDetails = () => {
   )
 }
 
-export default OperatorDetails
+export default Moderatordetails

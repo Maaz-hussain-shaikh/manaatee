@@ -2,13 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData } from '../../../datastore/paginationAction';
 import PageHeader from '../Pageheader';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Modrator = () => {
+
+  const locate=useNavigate()
   const URL = "https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator";
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.pagination);
   const [currentPage, setCurrentPage] = useState(1); // Start from page 1
+  const [active,setActive]=useState(null)
 
+  const toggleid = (id) => {
+    setActive(active === id ? null : id);
+  };
+  
   useEffect(() => {
     dispatch(fetchPageData(URL, currentPage));
   }, [dispatch, URL, currentPage]);
@@ -23,6 +32,36 @@ const Modrator = () => {
     }
   };
 
+  const handleSelect = (option,userid) => {
+    const fetchdata = async () => {
+        try {
+          const response = await axios.post("https://aaliyaenterprises.com/manaatee/Api/moderator/moderator_accept_reject",{
+            "user_id":userid,
+            "user_status":option
+        }, {
+            headers: {
+              authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
+            }
+          });
+  
+          if (response.data.status === true) {
+            console.log(response)
+            
+          } else {
+            console.log(response)
+          }
+  
+        } catch (error) {
+  
+          console.error("some thing broke error:", error.response?.data || error);
+  
+        }
+  
+  
+      };
+      fetchdata();
+    console.log(option)
+};
   return (
     <>
       <div className="mt-4 mx-4">
@@ -51,8 +90,8 @@ const Modrator = () => {
                   data[currentPage]?.data.map((elem, index) => {
                     const formattedDate = new Date(elem.created_date).toLocaleDateString();
                     return (
-                      <tr key={index} className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                        <td className="px-4 py-3">
+                      <tr key={index} className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" >
+                        <td className="px-4 py-3" onClick={()=>{locate(`/moderatordetails/${elem.user_id}`)}}>
                           <div className="flex items-center text-sm">
                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                               <img
@@ -70,12 +109,34 @@ const Modrator = () => {
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-3 text-sm">{elem.phone}</td>
-                        <td className="px-4 py-3 text-sm">{formattedDate}</td>
-                        <td className="px-4 py-3 text-xs">
-                          <span className={`px-2 py-1 font-semibold leading-tight ${elem.status === "Active" ? "text-green-700 bg-green-100" : "text-red-700 bg-red-100"} rounded-full`}>
+                        <td className="px-4 py-3 text-sm" onClick={()=>{locate(`/moderatordetails/${elem.user_id}`)}}>{elem.phone}</td>
+                        <td className="px-4 py-3 text-sm" onClick={()=>{locate(`/moderatordetails/${elem.user_id}`)}}>{formattedDate}</td>
+                        <td className="px-4 py-3 text-xs"  onClick={()=>{toggleid(elem.user_id)}}>
+                          <span className={` cursor-pointer px-2 py-1 font-semibold leading-tight ${elem.status === "active" ? "text-white bg-green-800" : "text-white bg-red-700"} rounded-lg`}>
                             {elem.status}
                           </span>
+                          {active === elem.user_id && (
+                                <div className="absolute right-20 bg-white border rounded-sm shadow-lg overflow-hidden z-20">
+                                    <div className="overflow-y-auto max-h-48">
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("active",elem.user_id)}>
+                                            <p className="text-sm font-semibold cursor-pointer">Active</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("inactive",elem.user_id)}>
+                                            <p className="text-sm font-semibold cursor-pointer">Inactive</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("deleted",elem.user_id)}>
+                                            <p className="text-sm font-semibold cursor-pointer">Deleted</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("pending",elem.user_id)}>
+                                            <p className="text-sm font-semibold cursor-pointer">Pending</p>
+                                        </div>
+                                        <div className="flex items-center px-4 py-2 hover:bg-gray-100" onClick={() => handleSelect("reject",elem.user_id)}>
+                                            <p className="text-sm font-semibold cursor-pointer">Reject</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            )}
                         </td>
                       </tr>
                     );

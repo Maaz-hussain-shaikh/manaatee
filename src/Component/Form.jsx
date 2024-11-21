@@ -50,7 +50,7 @@ const Form = () => {
         <div
           className="relative overflow-hidden md:flex w-1/2 bg-brand-darktheme from-blue-800 to-purple-700 i justify-around items-center hidden">
           <div>
-            <h1 className="text-white font-bold text-4xl font-sans">Manaatee</h1>
+            <h1 className="text-white font-bold text-4xl font-sans">Manatee</h1>
             <p className="text-white mt-1">The most popular peer to peer lending at SEA</p>
             <button type="submit" className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
           </div>

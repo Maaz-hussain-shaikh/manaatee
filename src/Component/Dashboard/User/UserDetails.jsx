@@ -63,7 +63,7 @@ const UserDetails = () => {
                   Otp verify :- {data[0].otp_verify}<br />
                   Age :- {data[0].age}<br />
                   Gender :- {data[0].gender}<br />
-                  Location :- {data[0].location}
+                  Location :- {data[0].location}{userid}
             
                 </p>
                 <div className="flex items-center mt-5">
