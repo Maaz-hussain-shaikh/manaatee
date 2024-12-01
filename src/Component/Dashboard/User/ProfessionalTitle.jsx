@@ -46,21 +46,21 @@ const ProfessionalTitle = () => {
                 <div className="w-full overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                      <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b darkkborder-gray-700 bg-gray-50 darkktext-gray-400 darkkbg-gray-800">
                         <th className="px-4 py-3">Category Name</th>
                         <th className="px-4 py-3">Audio Fee</th>
                         <th className="px-4 py-3">Video Fee</th>
                        
                       </tr>
                     </thead>
-                    <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
                     {data?.length > 0 ? (
             <>
                {
                             data?.map((elem,index)=>{
                                
                                 return(
-                                <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index}>
+                                <tr className="bg-gray-50 darkkbg-gray-800 hover:bg-gray-100 darkkhover:bg-gray-900 text-gray-700 darkktext-gray-400" key={index}>
                         <td className="px-4 py-3">
                           <div className="flex items-center text-sm">
                            

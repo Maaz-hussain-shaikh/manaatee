@@ -35,14 +35,14 @@ const Userlist = () => {
           <div className="w-full overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b darkkborder-gray-700 bg-gray-50 darkktext-gray-400 darkkbg-gray-800">
                   <th className="px-4 py-3">Name</th>
                   <th className="px-4 py-3">Number</th>
                   <th className="px-4 py-3">Created Date</th>
                   <th className="px-4 py-3">Status</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+              <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
                 {loading ? (
                   <tr>
                     <td colSpan="4" className="text-center">Loading...</td>
@@ -55,7 +55,7 @@ const Userlist = () => {
                   data[currentPage]?.data.map((elem, index) => {
                     const formattedDate = new Date(elem.created_date).toLocaleDateString();
                     return (
-                        <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index} onClick={()=>{locate(`/userdetails/${elem.user_id}`)}}>
+                        <tr className="bg-gray-50 darkkbg-gray-800 hover:bg-gray-100 darkkhover:bg-gray-900 text-gray-700 darkktext-gray-400" key={index} onClick={()=>{locate(`/userdetails/${elem.user_id}`)}}>
                         <td className="px-4 py-3">
                           <div className="flex items-center text-sm">
                             <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -64,13 +64,13 @@ const Userlist = () => {
                             </div>
                             <div>
                               <p className="font-semibold">{elem.full_name}</p>
-                              <p className="text-xs text-gray-600 dark:text-gray-400">{elem.email}</p>
+                              <p className="text-xs text-gray-600 darkktext-gray-400">{elem.email}</p>
                             </div>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-sm">{elem.phone}</td>
                         <td className="px-4 py-3 text-xs">
-                          <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> {elem.status}</span>
+                          <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full darkkbg-green-700 darkktext-green-100"> {elem.status}</span>
                         </td>
                         <td className="px-4 py-3 text-sm">{formattedDate}</td>
                       </tr>
@@ -84,7 +84,7 @@ const Userlist = () => {
               </tbody>
             </table>
           </div>
-          <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+          <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t darkkborder-gray-700 bg-gray-50 sm:grid-cols-9 darkktext-gray-400 darkkbg-gray-800">
             <span className="flex items-center col-span-3"> Showing Page {currentPage}</span>
             <span className="col-span-2"></span>
             <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
