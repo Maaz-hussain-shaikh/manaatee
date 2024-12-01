@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 
 const Opform = () => {
   const URL = 'https://aaliyaenterprises.com/manaatee/Api/admin/operator_registration';
 
- 
+
   const [data, setData] = useState({
     full_name: "",
     email: "",
@@ -29,6 +29,9 @@ const Opform = () => {
       setErrorMessage("Please enter all information");
       return;
     }
+    const loadingToastId = toast.loading("Updating Moderator Status...", {
+      position: "top-center",
+    });
     try {
       const response = await axios.post(URL, {
         "full_name": data.full_name,
@@ -43,15 +46,57 @@ const Opform = () => {
       }
       );
       setErrorMessage(response.data.mass);
-      if (response.data.status === true) { 
+      if (response.data.status === true) {
+        setData({})
+        toast.update(loadingToastId, {
+          render: response.data.message,
+          type: "success",
+          isLoading: false,
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+
+        });
       } else {
         setErrorMessage(response.data.mass)
-       console.log(response.data,data)
+        console.log(response.data, data)
         setData({})
+        toast.update(loadingToastId, {
+          render: response.data.message,
+          type: "error",
+          isLoading: false,
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+  
+        });
       }
 
     } catch (error) {
+      toast.update(loadingToastId, {
+        render: "Please check your internet connection and try again",
+        type: "error",
+        isLoading: false,
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
 
+      });
       console.error("Login error:", error.response?.data || error);
       setErrorMessage(error.response?.data?.message);
     }
@@ -116,7 +161,7 @@ const Opform = () => {
               onChange={handelchange} placeholder="Password" />
           </div>
           <p className="text-sm font-normal text-red-600 text-center">  </p>
-          <button className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"  type="submit">Login</button>
+          <button className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2" type="submit">Login</button>
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">Forgot Password ?</span>
         </div>
       </form>

@@ -16,20 +16,19 @@ import AllPrimaryConcerns from './Component/Dashboard/User/AllPrimaryConcerns';
 import UserDetails from './Component/Dashboard/User/UserDetails';
 import OperatorDetails from './Component/Dashboard/User/Operatordetails';
 import Moderatordetails from './Component/Dashboard/User/Moderatordetails';
-
+import { ToastContainer } from 'react-toastify';
 function App() {
-  return (
-    <Router>
+  return (<>
+  <Router>
     <Routes>
     <Route element={<Dashboard />}>
-          <Route path="/" element={<Analytics />} />
-          <Route path="/users" element={<Userlist />} />
-
+          <Route path="/" element={<Analytics />}/>
+          <Route path="/users" element={<Userlist />}/>
           <Route path="/userdetails/:userid" element={<UserDetails />} />
           <Route path="/operatordetails/:operatorid" element={<OperatorDetails />} />
-          <Route path="/moderatordetails/:moderatorid" element={<Moderatordetails />} />
+          <Route path="/moderatordetails/:moderatorid" element={<Moderatordetails/>} />
           <Route path="/Operatorlist" element={<Operatorslist/>} />
-          <Route path="/users" element={<Userlist />} />
+          <Route path="/users" element={<Userlist/>}/>
           <Route path="/Moderatorlist" element={<Modrator/>} />
           <Route path="/Opform" element={<Opform/>} />
           <Route path="/ProfessionalTitle" element={<ProfessionalTitle/>} />
@@ -43,6 +42,10 @@ function App() {
         </Route>
     </Routes>
   </Router>
+  <ToastContainer />
+  </>
+    
+  
   );
 }
 

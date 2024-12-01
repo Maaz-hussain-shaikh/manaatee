@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
+import { toast } from 'react-toastify';
 
 const Moderatordetails = () => {
   const { moderatorid } = useParams(); 
@@ -46,7 +46,11 @@ const Moderatordetails = () => {
   const handleSelect = (option) => {
 
     const fetchdata = async () => {
+      const loadingToastId = toast.loading("Updating Moderator Status...",{
+        position: "top-center",
+      });
         try {
+          
           const response = await axios.post("https://aaliyaenterprises.com/manaatee/Api/moderator/moderator_accept_reject",{
             "user_id": moderatorid,
             "user_status":option
@@ -58,13 +62,40 @@ const Moderatordetails = () => {
   
           if (response.data.status === true) {
             console.log(response)
+            toast.update(loadingToastId, {
+              render: response.data.message,
+          type: "success",
+          isLoading: false,
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+             
+              });
             
           } else {
             console.log(response)
           }
   
         } catch (error) {
-  
+          toast.update(loadingToastId, {
+            render: "Please check your internet connection and try again",
+            type: "error",
+            isLoading: false,
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+    
+          });
           console.error("some thing broke error:", error.response?.data || error);
   
         }
