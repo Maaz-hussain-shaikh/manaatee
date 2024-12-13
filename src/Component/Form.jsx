@@ -32,6 +32,7 @@ const Form = () => {
       );
       setErrorMessage(response.data.mass);
       if (response.data.status === true) {
+        console.log(response)
         toast.update(loadingToastId, {
           render: "Login success",
           type: "success",
@@ -53,11 +54,25 @@ const Form = () => {
       } else {
         setPassword("");
         setuser("")
+        toast.update(loadingToastId, {
+          render: "Please check your internet connection and try again",
+          type: "error",
+          isLoading: false,
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+  
+        });
       }
 
     } catch (error) {
       toast.update(loadingToastId, {
-        render: "Please check your internet connection and try again",
+        render: "error",
         type: "error",
         isLoading: false,
         position: "top-center",

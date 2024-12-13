@@ -15,6 +15,7 @@ const Modrator = () => {
   const { data, loading, error } = useSelector((state) => state.pagination);
   const [currentPage, setCurrentPage] = useState(1); // Start from page 1
   const [active, setActive] = useState(null)
+  const [apiSuccess, setApiSuccess] = useState(false);
 
   const toggleid = (id) => {
     setActive(active === id ? null : id);
@@ -22,7 +23,7 @@ const Modrator = () => {
 
   useEffect(() => {
     dispatch(fetchPageData(URL, currentPage));
-  }, [dispatch, URL, currentPage]);
+  }, [dispatch, URL, currentPage,apiSuccess]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -52,7 +53,7 @@ const Modrator = () => {
 
         if (response.data.status === true) {
           console.log(response)
-          
+          setApiSuccess(!apiSuccess)
           toast.update(loadingToastId, {
             render: response.data.message,
         type: "success",

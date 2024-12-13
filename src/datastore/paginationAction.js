@@ -1,8 +1,13 @@
+import axios from "axios";
+
 export const fetchPageData = (url, page) => async (dispatch) => {
     dispatch({ type: 'FETCH_PAGE_REQUEST' });
     try {
-      const response = await fetch(`${url}?page=${page}&limit=1`);
-      const data = await response.json();
+      const response = await axios.get(`${url}?page=${page}&limit=1`, {
+        headers: {
+          authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
+        }});
+      const data = await response.data;
       dispatch({
         type: 'FETCH_PAGE_SUCCESS',
         payload: { page, data, },
