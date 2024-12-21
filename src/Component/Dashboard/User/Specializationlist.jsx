@@ -4,7 +4,7 @@ import PageHeader from '../Pageheader';
 
 
 const Specializationlist = () => {
-    const URL="https://aaliyaenterprises.com/manaatee/Api/masters/all_specilization"
+    const URL="https://manaatee.cyberelite.work/manaatee/Api/masters/all_specilization"
     const [data,setdata]=useState();
    
     

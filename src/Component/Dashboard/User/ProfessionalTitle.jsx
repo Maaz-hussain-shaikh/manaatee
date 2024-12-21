@@ -4,7 +4,7 @@ import PageHeader from '../Pageheader';
 
 
 const ProfessionalTitle = () => {
-    const URL="https://aaliyaenterprises.com/manaatee/Api/masters/professional_title?id=0"
+    const URL="https://manaatee.cyberelite.work/manaatee/Api/masters/professional_title?id=0"
     const [data,setdata]=useState();
    
     

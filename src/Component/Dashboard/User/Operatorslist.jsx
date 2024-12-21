@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Opratorlist = () => {
-      const URL="https://aaliyaenterprises.com/manaatee/Api/admin/all_operators"
+      const URL="https://manaatee.cyberelite.work/manaatee/Api/admin/all_operators"
 const [data,setdata]=useState();
 const locate=useNavigate();
 
@@ -78,21 +78,21 @@ useEffect(()=>{
             <div className="w-full overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b darkkborder-gray-700 bg-gray-50 darkktext-gray-400 darkkbg-gray-800">
                     <th className="px-4 py-3">User Name</th>
                     <th className="px-4 py-3">Number</th>
                     <th className="px-4 py-3">Status</th>
                     <th className="px-4 py-3">Created Date</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
                 {data?.length > 0 ? (
         <>
            {
                         data?.map((elem,index)=>{
                             const formattedDate = new Date(data[index].created_date).toLocaleDateString()
                             return(
-                            <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400" key={index} onClick={()=>{locate(`/operatordetails/${data[index].user_id}`)}}>
+                            <tr className="bg-gray-50 darkkbg-gray-800 hover:bg-gray-100 darkkhover:bg-gray-900 text-gray-700 darkktext-gray-400" key={index} onClick={()=>{locate(`/operatordetails/${data[index].user_id}`)}}>
                     <td className="px-4 py-3">
                       <div className="flex items-center text-sm">
                         <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -101,13 +101,13 @@ useEffect(()=>{
                         </div>
                         <div>
                           <p className="font-semibold">{data[index].full_name}</p>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">{data[index].email}</p>
+                          <p className="text-xs text-gray-600 darkktext-gray-400">{data[index].email}</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-sm">{data[index].number}</td>
                     <td className="px-4 py-3 text-xs">
-                      <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> {data[index].status}</span>
+                      <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full darkkbg-green-700 darkktext-green-100"> {data[index].status}</span>
                     </td>
                     <td className="px-4 py-3 text-sm">{formattedDate}</td>
                   </tr>

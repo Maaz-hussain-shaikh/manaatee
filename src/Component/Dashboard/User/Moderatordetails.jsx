@@ -9,8 +9,8 @@ const Moderatordetails = () => {
   const { moderatorid } = useParams();
 
   const [active, setactive] = useState(false)
-  const URL = `https://aaliyaenterprises.com/manaatee/Api/moderator/all_moderator?'user_id=${moderatorid}`
-  const ScheduleURL = `https://aaliyaenterprises.com/manaatee/Api/doctor/fetch_schedule`
+  const URL = `https://manaatee.cyberelite.work/manaatee/Api/moderator/all_moderator?'user_id=${moderatorid}`
+  const ScheduleURL = `https://manaatee.cyberelite.work/manaatee/Api/doctor/fetch_schedule`
 
   const [data, setdata] = useState([]);
   const [Scheduledata, setScheduledata] = useState([])
@@ -73,7 +73,7 @@ const Moderatordetails = () => {
     };
     fetchdata();
     fetch_schedule();
-  }, [URL,Scheduledata,ScheduleURL])
+  }, [URL,ScheduleURL])
 
   const handleSelect = (option) => {
 
@@ -83,7 +83,7 @@ const Moderatordetails = () => {
       });
       try {
 
-        const response = await axios.post("https://aaliyaenterprises.com/manaatee/Api/moderator/moderator_accept_reject", {
+        const response = await axios.post("https://manaatee.cyberelite.work/manaatee/Api/moderator/moderator_accept_reject", {
           "user_id": moderatorid,
           "user_status": option
         }, {

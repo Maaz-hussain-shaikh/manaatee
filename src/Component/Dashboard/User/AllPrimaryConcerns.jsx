@@ -4,7 +4,7 @@ import PageHeader from '../Pageheader';
 
 
 const AllPrimaryConcerns = () => {
-    const URL="https://aaliyaenterprises.com/manaatee/Api/masters/all_primary_concerns"
+    const URL="https://manaatee.cyberelite.work/manaatee/Api/masters/all_primary_concerns"
     const [data,setdata]=useState();
    
     

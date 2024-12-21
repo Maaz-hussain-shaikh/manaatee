@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 const OperatorDetails = () => {
   const {operatorid} = useParams()
-    const URL = `https://aaliyaenterprises.com/manaatee/Api/admin/all_operators`
+    const URL = `https://manaatee.cyberelite.work/manaatee/Api/admin/all_operators`
   const [data, setdata] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {

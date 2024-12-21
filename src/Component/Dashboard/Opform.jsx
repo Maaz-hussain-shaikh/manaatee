@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Opform = () => {
-  const URL = 'https://aaliyaenterprises.com/manaatee/Api/admin/operator_registration';
+  const URL = 'https://manaatee.cyberelite.work/manaatee/Api/admin/operator_registration';
 
 
   const [data, setData] = useState({

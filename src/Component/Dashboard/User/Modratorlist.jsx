@@ -14,7 +14,7 @@ const Modratorlist = ({ data }) => {
 
         const fetchdata = async () => {
             try {
-              const response = await axios.post("https://aaliyaenterprises.com/manaatee/Api/moderator/moderator_accept_reject",{
+              const response = await axios.post("https://manaatee.cyberelite.work/manaatee/Api/moderator/moderator_accept_reject",{
                 "user_id":user_id,
                 "user_status":option
             }, {

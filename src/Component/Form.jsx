@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 const Form = () => {
-  const URL = 'https://aaliyaenterprises.com/manaatee/Api/loginAuth/login_verification';
+  const URL = 'https://manaatee.cyberelite.work/manaatee/Api/loginAuth/login_verification';
 
   const locate = useNavigate();
   const [user, setuser] = useState("");
