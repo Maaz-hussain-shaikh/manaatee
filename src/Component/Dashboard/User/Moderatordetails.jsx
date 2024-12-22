@@ -55,7 +55,7 @@ const Moderatordetails = () => {
         if (response.data.status === true) {
 
           setScheduledata(response.data.data.data)
-          console.log(Scheduledata)
+         
         } else {
           setScheduledata(response.data.data)
           console.log(response.data)

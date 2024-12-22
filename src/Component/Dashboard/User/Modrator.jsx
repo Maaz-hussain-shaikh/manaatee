@@ -12,8 +12,7 @@ const Modrator = () => {
   const locate = useNavigate()
   const URL = "https://manaatee.cyberelite.work/manaatee/Api/moderator/all_moderator";
   const dispatch = useDispatch();
-  const { data, loading, error,} = useSelector((state) => state.pagination);
-  const [total,setTotal]=useState("--")
+  const { data, loading, error,totalpage} = useSelector((state) => state.pagination);
   const [currentPage, setCurrentPage] = useState(1); // Start from page 1
   const [active, setActive] = useState(null)
   const [apiSuccess, setApiSuccess] = useState(false);
@@ -24,16 +23,12 @@ const Modrator = () => {
 
   useEffect(() => {
     dispatch(fetchPageData(URL, currentPage));
-    if (data && data[1]?.total) {
-      setTotal(data[1].total);
-    } else {
-      setTotal('--'); 
-    }
+   
   }, [dispatch, URL, currentPage,apiSuccess]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
-    
+    console.log(totalpage.totalpage)
 
   };
 
@@ -192,7 +187,7 @@ const Modrator = () => {
             </table>
           </div>
           <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t darkkborder-gray-700 bg-gray-50 sm:grid-cols-9 darkktext-gray-400 darkkbg-gray-800">
-            <span className="flex items-center col-span-3">Showing Page {currentPage-1}-{currentPage} of {total}</span>
+            <span className="flex items-center col-span-3">Showing Page {currentPage-1}-{currentPage} of {loading?"--":totalpage.totalpage}</span>
             <span className="col-span-2"></span>
             <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
               <nav aria-label="Table navigation">
@@ -217,7 +212,7 @@ const Modrator = () => {
                       className="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
                       aria-label="Next"
                       onClick={handleNextPage}
-                      disabled={currentPage === total} // Disable if no more data
+                      disabled={loading?"--":currentPage === totalpage.totalpage} // Disable if no more data
                     >
                       <svg className="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
                         <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" fillRule="evenodd"></path>
