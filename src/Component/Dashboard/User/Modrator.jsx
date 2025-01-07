@@ -28,7 +28,7 @@ const Modrator = () => {
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
-    console.log(totalpage.totalpage)
+    
 
   };
 
