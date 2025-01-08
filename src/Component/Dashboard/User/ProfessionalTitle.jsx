@@ -14,6 +14,8 @@ const ProfessionalTitle = () => {
     consult_category_audio_fee: "",
     consult_category_video_fee: "",
   })
+  const[loading,setloading]=useState(true)
+      const[error,seterror]=useState(null)
   useEffect(() => {
     const fetchdata = async () => {
       try {
@@ -26,13 +28,18 @@ const ProfessionalTitle = () => {
         if (response.data.status === true) {
           console.log(response.data)
           setdata(response.data.data)
+          setloading(false)
         } else {
+          seterror(response.data.mass)
+          setloading(false)
+         
           setdata(response.data.mass)
           
         }
 
       } catch (error) {
-
+        seterror("some thing broke")
+        setloading(false)
         console.error("some thing broke error:", error.response?.data || error);
 
       }
@@ -260,7 +267,15 @@ const ProfessionalTitle = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
-                {data?.length > 0 ? (
+                {loading ? (
+                  <tr>
+                    <td colSpan="4" className="text-center">Loading...</td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan="4" className="text-center text-red-500">Error: {error.message || "Please check your internet connection and try again"}</td>
+                  </tr>
+                ) :data?.length > 0 ? (
                   <>
                     {
                       data?.map((elem, index) => {
@@ -362,8 +377,8 @@ const ProfessionalTitle = () => {
                   </>
                 ) : (
                   <tr>
-                    <td><p>Loading...</p></td>
-                  </tr>
+                  <td colSpan="4" className="text-center">No Data available</td>
+                </tr>
                 )}
 
               </tbody>
