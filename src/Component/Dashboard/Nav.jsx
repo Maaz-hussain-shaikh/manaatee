@@ -17,7 +17,7 @@ const Nav = ({ onToggle }) => {
   return (
     <>
     
-    <nav className="navbar border-b bg-white fixed top-0 left-0 right-0 ">
+    <nav className="navbar border-b bg-white fixed top-0 left-0 right-0 z-1">
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         {/* Search Bar */}
         <div className="hidden lg:flex items-center m-auto">

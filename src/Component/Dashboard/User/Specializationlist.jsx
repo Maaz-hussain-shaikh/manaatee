@@ -208,14 +208,14 @@ const Specializationlist = () => {
                 <div className="flex flex-col">
                   <label className="text-sm font-medium text-gray-600">Add Image</label>
                   <div
-                    className="relative mt-2 flex items-center justify-center w-full h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400" onClick={() => document.getElementById(`image-input-new`).click()}
+                    className="relative mt-2 flex items-center justify-center w-full h-20 bg-gray-200 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-blue-400" onClick={() => document.getElementById(`image-input-new`).click()}
                   >
                     {image ? (
-                      <p className="text-sm text-gray-500">{image.name}</p>
+                      <p className="text-sm text-gray-600">{image.name}</p>
                     ) : (
                       <>
                         <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
-                        <p className="text-sm text-gray-500">Click to upload or drag & drop</p>
+                        <p className="text-sm text-gray-600">Click to upload or drag & drop</p>
                       </>
                     )}
                   </div>
@@ -315,13 +315,13 @@ const Specializationlist = () => {
                                 {/* Image Upload */}
                                 <div className="flex flex-col w-full">
                                   <label className="text-sm font-medium text-gray-600">Update Image</label>
-                                  <div className='relative mt-2 flex items-center justify-center w-full h-8 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400' onClick={() => document.getElementById(`image-input-${index}`).click()}>
+                                  <div className='relative mt-2 flex items-center justify-center w-full h-8 bg-gray-200 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-blue-400' onClick={() => document.getElementById(`image-input-${index}`).click()}>
                                     {image ? (
-                                      <p className="text-sm text-gray-500">{image.name}</p>
+                                      <p className="text-sm text-gray-600">{image.name}</p>
                                     ) : (
                                       <>
                                         <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
-                                        <p className="text-sm text-gray-500">Click to upload or drag & drop</p>
+                                        <p className="text-sm text-gray-600">Click to upload or drag & drop</p>
                                       </>
                                     )}
                                   </div>

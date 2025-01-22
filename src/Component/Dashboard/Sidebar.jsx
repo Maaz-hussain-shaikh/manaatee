@@ -48,7 +48,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-gray-800 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar">
+    <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-gray-800 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar z-2">
       <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 
        

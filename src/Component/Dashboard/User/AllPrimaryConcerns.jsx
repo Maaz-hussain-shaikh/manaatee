@@ -9,8 +9,8 @@ const AllPrimaryConcerns = () => {
   const [data, setdata] = useState();
   const [editIndex, setEditIndex] = useState(null)
   const [image, setimage] = useState(null)
-   const[loading,setloading]=useState(true)
-    const[error,seterror]=useState(null)
+  const [loading, setloading] = useState(true)
+  const [error, seterror] = useState(null)
   const [editForm, setEditForm] = useState()
   const [apiSuccess, setApiSuccess] = useState(false);
   useEffect(() => {
@@ -102,7 +102,7 @@ const AllPrimaryConcerns = () => {
             draggable: true,
             progress: undefined,
             theme: "light",
-    
+
           });
           console.log(response)
         }
@@ -162,7 +162,7 @@ const AllPrimaryConcerns = () => {
             draggable: true,
             progress: undefined,
             theme: "light",
-    
+
           });
         }
 
@@ -207,16 +207,16 @@ const AllPrimaryConcerns = () => {
                 <div className="flex flex-col">
                   <label className="text-sm font-medium text-gray-600">Update Image</label>
                   <div
-                    className="relative mt-2 flex items-center justify-center w-full h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400" onClick={() => document.getElementById(`image-input-new`).click()}
+                    className="relative mt-2 flex items-center justify-center w-full h-20 bg-gray-200 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-blue-400" onClick={() => document.getElementById(`image-input-new`).click()}
                   >
                     {image ? (
-              <p className="text-sm text-gray-500">{image.name}</p>
-            ) : (
-              <>
-                <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
-                <p className="text-sm text-gray-500">Click to upload or drag & drop</p>
-              </>
-            )}
+                      <p className="text-sm text-gray-600">{image.name}</p>
+                    ) : (
+                      <>
+                        <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
+                        <p className="text-sm text-gray-600">Click to upload or drag & drop</p>
+                      </>
+                    )}
                   </div>
                   <input
                     type="file"
@@ -249,14 +249,14 @@ const AllPrimaryConcerns = () => {
             </thead>
             <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
               {loading ? (
-                  <tr>
-                    <td colSpan="4" className="text-center">Loading...</td>
-                  </tr>
-                ) : error ? (
-                  <tr>
-                    <td colSpan="4" className="text-center text-red-500">Error: {error.message || "Please check your internet connection and try again"}</td>
-                  </tr>
-                ) :data?.length > 0 ? (
+                <tr>
+                  <td colSpan="4" className="text-center">Loading...</td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan="4" className="text-center text-red-500">Error: {error.message || "Please check your internet connection and try again"}</td>
+                </tr>
+              ) : data?.length > 0 ? (
                 <>
                   {
                     data?.map((elem, index) => {
@@ -314,15 +314,15 @@ const AllPrimaryConcerns = () => {
                                 {/* Image Upload */}
                                 <div className="flex flex-col w-full">
                                   <label className="text-sm font-medium text-gray-600">Update Image</label>
-                                  <div className='relative mt-2 flex items-center justify-center w-full h-8 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-400' onClick={() => document.getElementById(`image-input-${index}`).click()}>
-                                  {image ? (
-              <p className="text-sm text-gray-500">{image.name}</p>
-            ) : (
-              <>
-                <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
-                <p className="text-sm text-gray-500">Click to upload or drag & drop</p>
-              </>
-            )}
+                                  <div className='relative mt-2 flex items-center justify-center w-full h-8 bg-gray-200 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-blue-400' onClick={() => document.getElementById(`image-input-${index}`).click()}>
+                                    {image ? (
+                                      <p className="text-sm text-gray-600">{image.name}</p>
+                                    ) : (
+                                      <>
+                                        <i className="fa-solid fa-file-image text-gray-600 text-2xl mr-2"></i>
+                                        <p className="text-sm text-gray-600">Click to upload or drag & drop</p>
+                                      </>
+                                    )}
                                   </div>
                                   <input
                                     type="file"
@@ -355,8 +355,8 @@ const AllPrimaryConcerns = () => {
                 </>
               ) : (
                 <tr>
-                    <td colSpan="4" className="text-center">No data available</td>
-                  </tr>
+                  <td colSpan="4" className="text-center">No data available</td>
+                </tr>
               )}
 
             </tbody>
