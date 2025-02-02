@@ -1,8 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Path from './Path';
+import { fetchmoderator,  fetchuser } from '../../datastore/api';
 
 
 const StatisticsCard = () => {
+
+  const [moderators, setModerators] = useState([]);
+ 
+  
+  const [user, setuser] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const moderatorRes = await fetchmoderator();
+        const userRes = await fetchuser();
+        if (moderatorRes) setModerators(moderatorRes.total);
+        if (userRes) setuser(userRes.total);
+        console.log(moderatorRes.total, userRes.total);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+
+  
   return (
     <>
     <Path/>
@@ -14,8 +42,8 @@ const StatisticsCard = () => {
             <i className="fas fa-users text-2xl"></i>
           </div>
           <div className="ml-4">
-            <p className="text-gray-600">Visitors</p>
-            <h4 className="text-xl font-semibold">1,294</h4>
+            <p className="text-gray-600">User</p>
+            <h4 className="text-xl font-semibold">{loading?<>....</>:<>{user}</>}</h4>
           </div>
         </div>
       </div>
@@ -27,8 +55,8 @@ const StatisticsCard = () => {
             <i className="fas fa-user-check text-2xl"></i>
           </div>
           <div className="ml-4">
-            <p className="text-gray-600">Subscribers</p>
-            <h4 className="text-xl font-semibold">1,303</h4>
+            <p className="text-gray-600">Moderators</p>
+            <h4 className="text-xl font-semibold">{loading?<>....</>:<>{moderators}</>}</h4>
           </div>
         </div>
       </div>

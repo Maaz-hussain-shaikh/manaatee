@@ -6,7 +6,7 @@ const Icon = ({ className }) => <i className={className}></i>;
 
 // SidebarItem component for each sidebar item
 const SidebarItem = ({ to, icon, label, notification }) => (
-  <Link to={to} className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+  <Link to={to} className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 darkk:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 darkk:hover:border-gray-800 pr-6">
     <span className="inline-flex justify-center items-center ml-4">
       <Icon className={icon} />
     </span>
@@ -21,7 +21,7 @@ const SidebarItem = ({ to, icon, label, notification }) => (
 const Dropdown = ({ label, isOpen, onToggle, items,icon }) => (
   <li className="relative">
     
-    <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 w-full" onClick={onToggle}>
+    <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 darkk:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 darkk:hover:border-gray-800 pr-6 w-full" onClick={onToggle}>
       <span className="inline-flex justify-center items-center ml-4">
         <Icon className={icon} />
       </span>
@@ -48,7 +48,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-gray-800 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar z-2">
+    <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-gray-800 darkk:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar z-2">
       <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 
        

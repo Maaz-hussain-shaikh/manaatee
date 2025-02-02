@@ -7,6 +7,8 @@ const UserDetails = () => {
   const {userid} = useParams()
     const URL = `https://manaatee.cyberelite.work/manaatee/Api/Users/all_user?user_id=${userid}`
   const [data, setdata] = useState([]);
+  const[loading,setloading]=useState(true)
+        const[error,seterror]=useState(null)
   useEffect(() => {
     const fetchdata = async () => {
       try {
@@ -18,16 +20,20 @@ const UserDetails = () => {
 
         
         if (response.data.status === true) {
-           
+          setloading(false)
             setdata(response.data.data)
+            
           } else {
+            setloading(false)
+            seterror(response.data.mass)
             setdata(response.data.data)
           }
   
       
 
       } catch (error) {
-
+        setloading(false)
+        seterror("some thing broke")
         console.error("some thing broke error:", error.response?.data || error);
 
       }
@@ -41,7 +47,28 @@ const UserDetails = () => {
   return (
    
     <>
-     {data?.length > 0 ? (<>
+    {loading ? (
+                    <>
+                  
+                    <div className="flex flex-col md:flex-row justify-center items-start md:items-center m-4 pt-2 ">
+                            <div >
+                             
+                              <h3 colSpan="4" className="text-center ">Loading...</h3>
+                            </div>
+                            
+                          </div></>
+                  
+                ) : error ? (<>
+                  
+                  <div className="flex flex-col md:flex-row justify-center items-start md:items-center m-4 pt-2 ">
+                          <div >
+                           
+                            <h3 colSpan="4" className="text-center text-red-500">Error: {error.message || "Please check your internet connection and try again"}</h3>
+                          </div>
+                          
+                        </div></>
+                ) :
+     data?.length > 0 ? (<>
       <div className="bg-stone-50 flex flex-col items-center pb-12 ">
         {/* Doctor Profile Header */}
         <div className="hidden sm:block bg-white w-full flex-col items-center pt-5 pb-6 px-16 max-md:max-w-full max-md:px-5">
@@ -66,14 +93,19 @@ const UserDetails = () => {
                   Location :- {data[0].location}{userid}
             
                 </p>
+                <button className={`w-50 font-bold py-2 mt-3 rounded-lg ${data[0].status === "active" ? "text-green-700 bg-green-300" : "text-red-700 bg-red-100"}`}>{data[0].status}</button>
                 <div className="flex items-center mt-5">
                   <img loading="lazy" src="https://views.medibuddy.in/doctor-profile/languages.webp" alt="Languages" className="w-6" />
                   <h3 className="text-indigo-950 text-sm font-bold ml-2">{data[0].preferred_language}</h3>
                 </div>
+                
               </div>
             </div>
+            
           </div>
+          
         </div>
+        
         <div className="container mx-auto mb-36 p-3 md:p-0">
           <div className="grid gap-5 md:grid-cols-3">
 

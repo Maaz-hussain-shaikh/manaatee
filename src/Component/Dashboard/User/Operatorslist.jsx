@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { fetchoprator } from '../../../datastore/api';
 
 const Opratorlist = () => {
-      const URL="https://manaatee.cyberelite.work/manaatee/Api/admin/all_operators"
 const [data,setdata]=useState();
 const locate=useNavigate();
 const[loading,setloading]=useState(true)
@@ -11,22 +10,16 @@ const[loading,setloading]=useState(true)
 useEffect(()=>{
     const fetchdata= async ()=>{
         try {
-            const response = await axios.post(URL,{
-                "userid": 0,               
-              },{
-                headers: {
-                  authorization: `Bearer OXU0c0JkY3AyNU1acmFqRTM3U1kxeGx2azpCNFJ6VWRIcnB4RXVxVFdPUUdKWFBudEw4`,
-              }
-              });
+            const response = await fetchoprator();
            
            if(response.data.status===true){
             console.log(response.data)
             setdata(response.data.data)
             setloading(false)
            }else{
-            seterror(response.data.mass)
+          seterror(response.data.mass)
           setloading(false)
-            setdata(response.data.mass)
+          setdata(response.data.mass)
            }
             
           } catch (error) {

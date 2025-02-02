@@ -189,7 +189,7 @@ const AllPrimaryConcerns = () => {
             className="self-start mb-2 md:mt-0 px-3 py-1 text-white bg-green-600 rounded-md hover:bg-green-700" onClick={() => handleEditClick("add")}
           ><p><i className="fa-solid fa-plus"></i> Add new Concerns</p></button>
           {editIndex === "add" && (
-            <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-md mt-2">
+            <div className="bg-gray-50 darkk:bg-gray-800 p-3 rounded-lg shadow-md mt-2">
               <div className="flex flex-col gap-3">
 
                 {/* Name Input */}
@@ -239,7 +239,7 @@ const AllPrimaryConcerns = () => {
           )}
           <table className="w-full">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b darkkborder-gray-700 bg-gray-50 darkktext-gray-400 darkkbg-gray-800">
+              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b darkkkborder-gray-700 bg-gray-50 darkkktext-gray-400 darkkkbg-gray-800">
                 <th className="px-4 py-3">User </th>
                 <th className="px-4 py-3">Name</th>
                 <th className="px-4 py-3">Status</th>
@@ -247,7 +247,7 @@ const AllPrimaryConcerns = () => {
 
               </tr>
             </thead>
-            <tbody className="bg-white divide-y darkkdivide-gray-700 darkkbg-gray-800">
+            <tbody className="bg-white divide-y darkkkdivide-gray-700 darkkkbg-gray-800">
               {loading ? (
                 <tr>
                   <td colSpan="4" className="text-center">Loading...</td>
@@ -262,7 +262,7 @@ const AllPrimaryConcerns = () => {
                     data?.map((elem, index) => {
 
                       return (<React.Fragment key={index}>
-                        <tr className="bg-gray-50 darkkbg-gray-800 hover:bg-gray-100 darkkhover:bg-gray-900 text-gray-700 darkktext-gray-400" >
+                        <tr className="bg-gray-50 darkkkbg-gray-800 hover:bg-gray-100 darkkkhover:bg-gray-900 text-gray-700 darkkktext-gray-400" >
                           <td className="px-4 py-3">
                             <div className="flex items-center text-sm">
                               <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
@@ -276,7 +276,7 @@ const AllPrimaryConcerns = () => {
                           </td>
                           <td className="px-4 py-3 text-sm">{data[index].text}</td>
                           <td className="px-4 py-3 text-xs">
-                            <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full darkkbg-green-700 darkktext-green-100"> {data[index].status}</span>
+                            <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full darkkkbg-green-700 darkkktext-green-100"> {data[index].status}</span>
                           </td>
                           <td className="text-center">
                             <button
@@ -296,7 +296,7 @@ const AllPrimaryConcerns = () => {
                         </tr>
                         {editIndex === index && (
                           <tr>
-                            <td colSpan="4" className="bg-gray-50 dark:bg-gray-800 p-3 border-t">
+                            <td colSpan="4" className="bg-gray-50 darkk:bg-gray-800 p-3 border-t">
                               <div
                                 className="flex flex-col md:flex-row gap-6"
                               >

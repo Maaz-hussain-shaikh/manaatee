@@ -9,7 +9,7 @@ const Moderatordetails = () => {
   const { moderatorid } = useParams();
 
   const [active, setactive] = useState(false)
-  const URL = `https://manaatee.cyberelite.work/manaatee/Api/moderator/all_moderator?'user_id=${moderatorid}`
+  const URL = `https://manaatee.cyberelite.work/manaatee/Api/Users/all_user?user_id=${moderatorid}`
   const ScheduleURL = `https://manaatee.cyberelite.work/manaatee/Api/doctor/fetch_schedule`
 
   const [data, setdata] = useState([]);
@@ -27,6 +27,7 @@ const Moderatordetails = () => {
         if (response.data.status === true) {
 
           setdata(response.data.data)
+          console.log(response.data.data)
         } else {
           setdata(response.data.data)
         }
@@ -140,6 +141,7 @@ const Moderatordetails = () => {
   return (
 
     <>
+    
       {data?.length > 0 ? (<>
         <div className="bg-stone-50 flex flex-col items-center pb-12 ">
           {/* Doctor Profile Header */}
@@ -255,7 +257,7 @@ const Moderatordetails = () => {
                 </div>
 
                 {/* Education */}
-                <div className="shadow-xl bg-white p-8 rounded-3xl space-y-6">
+                {/* <div className="shadow-xl bg-white p-8 rounded-3xl space-y-6">
                   <div className="flex items-center gap-4">
                     <img
                       src="https://views.medibuddy.in/doctor-profile/education.webp"
@@ -264,8 +266,8 @@ const Moderatordetails = () => {
                     />
                     <h2 className="text-indigo-950 text-lg font-bold">Education</h2>
                   </div>
-                  <div className="space-y-5">
-                    {/* Education Item */}
+                   <div className="space-y-5">
+                    Education Item
                     <div className="flex items-start gap-4">
                       <img
                         src="https://firebasestorage.googleapis.com/v0/b/neural-clarity-128610.appspot.com/o/android%2Fconsult%2FdefaultEducationLogo.png?alt=media&token=a0e01cbf-22bf-49ac-879b-f58011c472c6"
@@ -278,12 +280,12 @@ const Moderatordetails = () => {
                       </div>
                     </div>
 
-                    {/* Additional Education Items as needed */}
-                  </div>
-                </div>
+                    Additional Education Items as needed
+                  </div> 
+                </div> */}
 
                 {/* Specializations */}
-                <div className="shadow-xl bg-white p-8 rounded-3xl">
+                {/* <div className="shadow-xl bg-white p-8 rounded-3xl">
                   <div className="flex items-center gap-4">
                     <img
                       src="https://views.medibuddy.in/doctor-profile/specializations.webp"
@@ -295,20 +297,20 @@ const Moderatordetails = () => {
                   <div className="flex flex-wrap gap-4 mt-4">
                     <span className="border bg-white px-4 py-3 rounded-xl">Cognitive Error, Behavioral Techniques</span>
                     <span className="border bg-white px-4 py-3 rounded-xl">Active Listening, Non-Judgmental Approach</span>
-                    {/* Add more tags as needed */}
+                    Add more tags as needed
                   </div>
-                </div>
+                </div> */}
 
                 {/* FAQs */}
                 <div className="shadow-xl bg-white p-8 rounded-3xl">
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <img
                       src="https://views.medibuddy.in/doctor-profile/faq.webp"
                       alt="Doctor FAQ Logo"
                       className="w-6"
                     />
                     <h2 className="text-indigo-950 text-lg font-bold">Frequently Asked Questions</h2>
-                  </div>
+                  </div> */}
                   {/* Add FAQ items with dropdown as needed */}
                 </div>
               </div>
